@@ -36,42 +36,26 @@
     color:var(--fg); border:1px solid var(--muted)
   }
   nav a:hover{background:#0d1f1499}
-  main{margin-top:22px; border:1px dashed var(--muted); padding:18px}
   h2{color:var(--accent); margin:.2rem 0 .6rem}
   p, li{color:var(--fg)}
-  .blink{animation: blink 1.1s steps(1,end) infinite}
-  @keyframes blink{50%{opacity:0}}
   a{color:var(--link)}
   footer{margin-top:20px; color:var(--dim); font-size:.9rem}
   code,kbd{background:#0d1f14; border:1px solid #173a27; padding:.08rem .3rem}
-  .grid{display:grid; gap:10px}
+  .grid{display:grid;gap:10px}
   @media (min-width:800px){ .grid{grid-template-columns:1fr 1fr} }
   .card{border:1px solid var(--muted); padding:12px; background:#06100690}
-  .tag{color:#b7ffb7}
   .btn{
     display:inline-block; margin-top:6px; padding:6px 10px; border:1px solid var(--muted);
     text-decoration:none; color:var(--fg)
   }
   .btn:hover{background:#0d1f1499}
-
-  /* grid layout for projects & socials */
-.grid {
-  display: grid;
-  gap: 10px;
-}
-@media (min-width: 800px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>$ whoami → <span class="tag">bacar00t</span><span class="blink">_</span></h1>
-    <small>Coffee + keebs + Linux • student @ UPOL • Omarchy btw</small>
+    <h1>$ whoami → <span class="tag">bacar00t</span></h1>
+    <small>Coffee + keebs + Linux • student @ UPOL • Arch btw</small>
     <nav>
       <a href="#about">/about</a>
       <a href="projects.html">/projects</a>
@@ -80,6 +64,24 @@
     </nav>
   </header>
 
+  <!-- SOCIALS SECTION -->
+  <section id="socials" class="grid" aria-label="socials">
+    <div class="card">
+      <h2># Instagram</h2>
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DPHpx-9DfJq/"
+        data-instgrm-version="14"></blockquote>
+    </div>
+
+    <div class="card">
+      <h2># X (Twitter)</h2>
+      <blockquote class="twitter-tweet">
+        <a href="https://x.com/bacar00t/status/1975230434230391122"></a>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ABOUT (your current version preserved) -->
   <main id="about">
     <h2># about</h2>
     <p>Hi, I’m Batcha. IT major, tinkerer, Omarchy fanboy. I fix things so you don’t have to.</p>
@@ -89,61 +91,25 @@
     </ul>
   </main>
 
-<section id="socials" class="grid" aria-label="socials">
-  <div class="card">
-    <h2># Instagram</h2>
-    <blockquote class="instagram-media"
-      data-instgrm-permalink="https://www.instagram.com/p/DPHpx-9DfJq/"
-      data-instgrm-version="14"></blockquote>
-  </div>
-
-  <div class="card">
-    <h2># X (Twitter)</h2>
-    <blockquote class="twitter-tweet">
-      <a href="https://x.com/bacar00t/status/1975230434230391122"></a>
-    </blockquote>
-  </div>
-
-  <!-- scripts only once, usually near bottom of <body> -->
-  <script async src="//www.instagram.com/embed.js"></script>
-  <script async src="https://platform.twitter.com/widgets.js"></script>
-</section>
-
+  <!-- PROJECTS -->
   <section id="projects" class="grid" aria-label="projects">
-  <div id="projects-grid"></div>
-</section>
+    <div id="projects-grid"></div>
+  </section>
 
-<script>
-async function loadLatestProjects(){
-  const res = await fetch('projects.json');
-  const items = (await res.json())
-    .sort((a,b)=> new Date(b.date)-new Date(a.date))
-    .slice(0,2);
-
-  const grid = document.getElementById('projects-grid');
-  grid.innerHTML = items.map(p=>`
-    <div class="card">
-      <h2>// ${p.title}</h2>
-      <p>${p.desc}</p>
-      <a class="btn" href="${p.url}" target="_blank" rel="noreferrer">view →</a>
-    </div>
-  `).join('');
-}
-loadLatestProjects();
-</script>
-
+  <!-- LINKS -->
   <section id="links" class="card">
     <h2># links</h2>
     <p>
-      <a href="https://github.com/BacaR00T" target="_blank" rel="noreferrer">github</a> 
-      <a href="https://www.instagram.com/bacar00t/" target="_blank" rel="noreferrer">instagram</a>
-      <a href="https://x.com/bacar00t" target="_blank" rel="noreferrer">twitter</a> 
+      <a href="https://github.com/BacaR00T" target="_blank" rel="noreferrer">github</a> ·
+      <a href="#" target="_blank" rel="noreferrer">resume</a> ·
+      <a href="#" target="_blank" rel="noreferrer">music</a>
     </p>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="card">
     <h2># contact</h2>
-    <p>Email: <a href="mailto:martin.guris01@upol.cz">martin.guris01@upol.cz (pls dont)</a></p>
+    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
   </section>
 
   <footer>© <span id="y"></span> bacar00t • hosted on GitHub Pages</footer>
@@ -151,15 +117,37 @@ loadLatestProjects();
 
 <div class="crt" aria-hidden="true"></div>
 
+<!-- Scripts -->
+<script async src="https://www.instagram.com/embed.js"></script>
+<script async src="https://platform.twitter.com/widgets.js"></script>
 <script>
-  // tiny JS: smooth scroll + year
+  // Smooth scroll + dynamic projects + year
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
       e.preventDefault();
       document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
       history.pushState(null,'',a.getAttribute('href'));
-    })
+    });
   });
+
+  async function loadLatestProjects(){
+    try {
+      const res = await fetch('projects.json');
+      const items = (await res.json())
+        .sort((a,b)=> new Date(b.date)-new Date(a.date))
+        .slice(0,2);
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = items.map(p=>`
+        <div class="card">
+          <h2>// ${p.title}</h2>
+          <p>${p.desc}</p>
+          <a class="btn" href="${p.url}" target="_blank" rel="noreferrer">view →</a>
+        </div>`).join('');
+    } catch(e) {
+      console.error("Projects JSON missing or invalid:", e);
+    }
+  }
+  loadLatestProjects();
   document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
