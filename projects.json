@@ -1,18 +1,14 @@
 [
-
-  {
-  "title": "ThinkCentre M910x Homelab",
-  "desc": "i7-6700 • 32GB • Proxmox → Debian VM + CasaOS + Crafty for MC servers.",
-  "url": "projects/thinkcentre-m910x.html",
-  "date": "2025-10-08"
-},
-
 {
   "title": "Main NAS — TrueNAS RAID-Z1",
   "desc": "i7-3820 • 16 GB RAM • 4×5 TB RAID-Z1 • TrueNAS core for storage & backups.",
   "url": "projects/main-nas.html",
   "date": "2025-10-09"
+},
+  {
+  "title": "ThinkCentre M910x Homelab",
+  "desc": "i7-6700 • 32GB • Proxmox → Debian VM + CasaOS + Crafty for MC servers.",
+  "url": "projects/thinkcentre-m910x.html",
+  "date": "2025-10-08"
 }
-
-
 ]

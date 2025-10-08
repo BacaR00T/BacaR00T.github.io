@@ -1,55 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>bacar00t // projects</title>
 <link rel="icon" href="data:,">
 <style>
-  /* (reuse your retro styles; paste same CSS from index.html here) */
-  :root{--bg:#0b0f0c;--fg:#d6f5d0;--dim:#87c787;--accent:#9aff9a;--link:#a6ffea;--muted:#5aa65a}
-  body{margin:0;font:16px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--fg);background:#000}
-  .wrap{max-width:840px;margin:auto;padding:48px 20px 80px}
-  a{color:var(--link);text-decoration:none}
-  header{border:1px solid var(--muted);padding:14px 16px;background:#06100690}
-  header h1{margin:0;font-size:1.35rem;color:var(--accent)}
-  nav a{display:inline-block;margin-right:10px;padding:4px 10px;border:1px solid var(--muted);color:var(--fg)}
-  nav a:hover{background:#0d1f1499}
-  .grid{display:grid;gap:10px}
-  @media (min-width:800px){.grid{grid-template-columns:1fr 1fr}}
-  .card{border:1px solid var(--muted);padding:12px;background:#06100690}
-  .btn{display:inline-block;margin-top:6px;padding:6px 10px;border:1px solid var(--muted);color:var(--fg)}
-  .btn:hover{background:#0d1f1499}
-  .meta{color:var(--dim);font-size:.9rem}
-</style>
-</head>
-<body>
+:root{--bg:#0b0f0c;--fg:#d6f5d0;--dim:#87c787;--accent:#9aff9a;--link:#a6ffea;--muted:#5aa65a}
+body{margin:0;font:16px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--fg);background:#000}
+.wrap{max-width:840px;margin:auto;padding:48px 20px 80px}
+header{border:1px solid var(--muted);padding:14px 16px;background:#06100690}
+h1{margin:0;font-size:1.35rem;color:var(--accent)}
+nav a{display:inline-block;margin-right:10px;padding:4px 10px;border:1px solid var(--muted);color:var(--fg);text-decoration:none}
+nav a:hover{background:#0d1f1499}
+.grid{display:grid;gap:10px}
+@media (min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+.card{border:1px solid var(--muted);padding:12px;background:#06100690}
+.btn{display:inline-block;margin-top:6px;padding:6px 10px;border:1px solid var(--muted);color:var(--fg);text-decoration:none}
+.btn:hover{background:#0d1f1499}
+</style></head><body>
 <div class="wrap">
   <header>
     <h1>$ projects</h1>
-    <nav>
-      <a href="index.html">/home</a>
-      <a href="projects.html">/projects</a>
-    </nav>
+    <nav><a href="index.html">/home</a> <a href="projects.html">/projects</a></nav>
   </header>
-
   <main class="grid" id="all-projects"></main>
 </div>
-
 <script>
-async function loadAll(){
-  const res = await fetch('projects.json');
-  const items = (await res.json()).sort((a,b)=> new Date(b.date)-new Date(a.date));
-  const el = document.getElementById('all-projects');
-  el.innerHTML = items.map(p=>`
-    <div class="card">
-      <h2>// ${p.title}</h2>
-      <p class="meta">${new Date(p.date).toLocaleDateString()}</p>
-      <p>${p.desc}</p>
-      <a class="btn" href="${p.url}" target="_blank" rel="noreferrer">open →</a>
-    </div>
-  `).join('');
-}
-loadAll();
+(async ()=>{
+  try{
+    const res = await fetch('projects.json');
+    const items = (await res.json()).sort((a,b)=>new Date(b.date)-new Date(a.date));
+    document.getElementById('all-projects').innerHTML = items.map(p=>`
+      <div class="card">
+        <h2>// ${p.title}</h2>
+        <p style="color:var(--dim);font-size:.9rem">${new Date(p.date).toLocaleDateString()}</p>
+        <p>${p.desc}</p>
+        <a class="btn" href="${p.url}" target="_blank" rel="noreferrer">open →</a>
+      </div>`).join('');
+  }catch(e){ console.error('projects.json missing/invalid', e); }
+})();
 </script>
-</body>
-</html>
+</body></html>
