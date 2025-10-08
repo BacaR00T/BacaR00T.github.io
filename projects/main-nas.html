@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Main NAS — TrueNAS RAID-Z1 // bacar00t</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{--bg:#0b0f0c;--fg:#d6f5d0;--dim:#87c787;--accent:#9aff9a;--link:#a6ffea;--muted:#5aa65a}
+  body{margin:0;font:16px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--fg);background:#000}
+  .wrap{max-width:800px;margin:auto;padding:40px 20px}
+  header{border-bottom:1px solid var(--muted);padding-bottom:10px;margin-bottom:20px}
+  a{color:var(--link);text-decoration:none}
+  h1{color:var(--accent);margin-bottom:0}
+  img{max-width:100%;border:1px solid var(--muted);margin:10px 0}
+  pre{background:#06100690;padding:10px;overflow-x:auto}
+  .meta{color:var(--dim);font-size:.9rem;margin-bottom:20px}
+  .grid{display:grid;gap:10px}
+  @media (min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+  .card{border:1px solid var(--muted);padding:12px;background:#06100690}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Main NAS — TrueNAS RAID-Z1</h1>
+    <p class="meta">2025-10-09 · <a href="../projects.html">← all projects</a> · <a href="../index.html">/home</a></p>
+  </header>
+
+  <p>My main storage server, designed for reliability and quiet operation.  
+  It runs TrueNAS Core bare-metal and manages all my network shares, backups, and media data.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>// Hardware</h2>
+      <ul>
+        <li>Intel i7-3820</li>
+        <li>16 GB DDR3 RAM</li>
+        <li>Boot: 240 GB SATA SSD</li>
+        <li>Storage: 4 × 5 TB HDDs (RAID-Z1)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>// Role</h2>
+      <ul>
+        <li>TrueNAS Core — main OS</li>
+        <li>RAID-Z1 pool for redundancy</li>
+        <li>SMB shares for home network</li>
+        <li>Snapshot + backup automation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Screens / Photos</h2>
+  <img src="nas mobo.jpg" alt="Main NAS mobo">
+  
+  <h2>Setup notes</h2>
+  <pre># TrueNAS install (on 240GB SSD)
+# Create RAID-Z1 pool 'tank' from 4x5TB drives
+zpool create tank raidz1 /dev/sd[a-d]
+
+# Enable SMB and NFS shares
+# Create periodic snapshots and replication tasks
+  </pre>
+
+  <h2>Why this setup?</h2>
+  <p>This build balances storage capacity, data protection, and power efficiency.  
+  The i7-3820 handles ZFS compression and checksums easily, while RAID-Z1 provides one-drive fault tolerance with solid throughput.</p>
+
+  <p class="meta">© <span id="y"></span> bacar00t</p>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
