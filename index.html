@@ -1,1 +1,125 @@
-<h1>Hello from BacaR00T!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>bacar00t // index</title>
+<meta name="description" content="bacar00t — bio / links / projects" />
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --bg:#0b0f0c; --fg:#d6f5d0; --dim:#87c787; --accent:#9aff9a;
+    --link:#a6ffea; --muted:#5aa65a;
+  }
+  @keyframes crt-flicker { 0%,100%{opacity:.99} 50%{opacity:1} }
+  @keyframes glow { from{text-shadow:0 0 .4rem var(--accent)} }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font:16px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color:var(--fg); background:radial-gradient(ellipse at center,#0b0f0c 0%, #000 100%);
+    letter-spacing:.2px; text-rendering:optimizeLegibility;
+  }
+  .crt{
+    position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,.0) 0, rgba(0,0,0,.0) 2px, rgba(0,255,100,.05) 3px),
+                radial-gradient(circle at 50% 10%, rgba(0,255,120,.06), transparent 40%);
+    animation: crt-flicker 3s infinite;
+  }
+  .wrap{max-width:840px; margin:auto; padding:48px 20px 80px}
+  header{border:1px solid var(--muted); padding:14px 16px; background:#06100690; backdrop-filter: blur(2px)}
+  header h1{margin:0; font-size:1.35rem; color:var(--accent); animation:glow 2s ease-out 1}
+  header small{color:var(--dim)}
+  nav{margin-top:10px}
+  nav a{
+    display:inline-block; margin-right:10px; padding:4px 10px; text-decoration:none;
+    color:var(--fg); border:1px solid var(--muted)
+  }
+  nav a:hover{background:#0d1f1499}
+  main{margin-top:22px; border:1px dashed var(--muted); padding:18px}
+  h2{color:var(--accent); margin:.2rem 0 .6rem}
+  p, li{color:var(--fg)}
+  .blink{animation: blink 1.1s steps(1,end) infinite}
+  @keyframes blink{50%{opacity:0}}
+  a{color:var(--link)}
+  footer{margin-top:20px; color:var(--dim); font-size:.9rem}
+  code,kbd{background:#0d1f14; border:1px solid #173a27; padding:.08rem .3rem}
+  .grid{display:grid; gap:10px}
+  @media (min-width:800px){ .grid{grid-template-columns:1fr 1fr} }
+  .card{border:1px solid var(--muted); padding:12px; background:#06100690}
+  .tag{color:#b7ffb7}
+  .btn{
+    display:inline-block; margin-top:6px; padding:6px 10px; border:1px solid var(--muted);
+    text-decoration:none; color:var(--fg)
+  }
+  .btn:hover{background:#0d1f1499}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>$ whoami → <span class="tag">bacar00t</span><span class="blink">_</span></h1>
+    <small>Coffee + keebs + Linux • student @ UPOL • Arch btw</small>
+    <nav>
+      <a href="#about">/about</a>
+      <a href="#projects">/projects</a>
+      <a href="#links">/links</a>
+      <a href="#contact">/contact</a>
+    </nav>
+  </header>
+
+  <main id="about">
+    <h2># about</h2>
+    <p>Hi, I’m Batcha. IT major, tinkerer, Arch user. I break things so you don’t have to.</p>
+    <ul>
+      <li>🧰 Stack: HTML/CSS/JS, Python, bash, Git</li>
+      <li>🖥️ Rigs: T480 (Arch), R5 3600 + W5700, NAS on Proxmox/TrueNAS</li>
+      <li>⌨️ Hobbies: DIY keebs (KMK), Chi-fi, 3D printing (Ender 3 V2)</li>
+    </ul>
+  </main>
+
+  <section id="projects" class="grid" aria-label="projects">
+    <div class="card">
+      <h2>// project-one</h2>
+      <p>Short blurb about a thing you built. Repo, tech, result.</p>
+      <a class="btn" href="#" target="_blank" rel="noreferrer">view repo →</a>
+    </div>
+    <div class="card">
+      <h2>// project-two</h2>
+      <p>Another tiny description. Replace with your school project.</p>
+      <a class="btn" href="#" target="_blank" rel="noreferrer">live demo →</a>
+    </div>
+  </section>
+
+  <section id="links" class="card">
+    <h2># links</h2>
+    <p>
+      <a href="https://github.com/BacaR00T" target="_blank" rel="noreferrer">github</a> ·
+      <a href="#" target="_blank" rel="noreferrer">resume</a> ·
+      <a href="#" target="_blank" rel="noreferrer">music</a>
+    </p>
+  </section>
+
+  <section id="contact" class="card">
+    <h2># contact</h2>
+    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+  </section>
+
+  <footer>© <span id="y"></span> bacar00t • hosted on GitHub Pages</footer>
+</div>
+
+<div class="crt" aria-hidden="true"></div>
+
+<script>
+  // tiny JS: smooth scroll + year
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+      history.pushState(null,'',a.getAttribute('href'));
+    })
+  });
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
