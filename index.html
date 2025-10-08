@@ -62,7 +62,7 @@
     <small>Coffee + keebs + Linux • student @ UPOL • Omarchy btw</small>
     <nav>
       <a href="#about">/about</a>
-      <a href="#projects">/projects</a>
+      <a href="projects.html">/projects</a>
       <a href="#links">/links</a>
       <a href="#contact">/contact</a>
     </nav>
@@ -73,22 +73,32 @@
     <p>Hi, I’m Batcha. IT major, tinkerer, Omarchy fanboy. I fix things so you don’t have to.</p>
     <ul>
       <li>🖥️ Rigs: T480 (Omarchy), R5 3600 + RX6700XT, NAS on Proxmox/TrueNAS</li>
-      <li>⌨️ Hobbies: DIY keebs (KMK/POG), Chi-fi, 3D printing (Ender 3 V2)</li>
+      <li>⌨️ Hobbies: DIY keebs (KMK/POG), Chi-fi, 3D printing (Ender 3 V2), cats</li>
     </ul>
   </main>
 
   <section id="projects" class="grid" aria-label="projects">
+  <div id="projects-grid"></div>
+</section>
+
+<script>
+async function loadLatestProjects(){
+  const res = await fetch('projects.json');
+  const items = (await res.json())
+    .sort((a,b)=> new Date(b.date)-new Date(a.date))
+    .slice(0,2);
+
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = items.map(p=>`
     <div class="card">
-      <h2>// project-one</h2>
-      <p>Short blurb about a thing you built. Repo, tech, result.</p>
-      <a class="btn" href="#" target="_blank" rel="noreferrer">view repo →</a>
+      <h2>// ${p.title}</h2>
+      <p>${p.desc}</p>
+      <a class="btn" href="${p.url}" target="_blank" rel="noreferrer">view →</a>
     </div>
-    <div class="card">
-      <h2>// project-two</h2>
-      <p>Another tiny description. Replace with your school project.</p>
-      <a class="btn" href="#" target="_blank" rel="noreferrer">live demo →</a>
-    </div>
-  </section>
+  `).join('');
+}
+loadLatestProjects();
+</script>
 
   <section id="links" class="card">
     <h2># links</h2>
