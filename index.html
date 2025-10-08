@@ -53,6 +53,18 @@
     text-decoration:none; color:var(--fg)
   }
   .btn:hover{background:#0d1f1499}
+
+  /* grid layout for projects & socials */
+.grid {
+  display: grid;
+  gap: 10px;
+}
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -77,6 +89,26 @@
     </ul>
   </main>
 
+<section id="socials" class="grid" aria-label="socials">
+  <div class="card">
+    <h2># Instagram</h2>
+    <blockquote class="instagram-media"
+      data-instgrm-permalink="https://www.instagram.com/p/DPHpx-9DfJq/"
+      data-instgrm-version="14"></blockquote>
+  </div>
+
+  <div class="card">
+    <h2># X (Twitter)</h2>
+    <blockquote class="twitter-tweet">
+      <a href="https://x.com/bacar00t/status/1975230434230391122"></a>
+    </blockquote>
+  </div>
+
+  <!-- scripts only once, usually near bottom of <body> -->
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js"></script>
+</section>
+
   <section id="projects" class="grid" aria-label="projects">
   <div id="projects-grid"></div>
 </section>
@@ -99,22 +131,6 @@ async function loadLatestProjects(){
 }
 loadLatestProjects();
 </script>
-
-<section id="socials" class="card">
-  <h2># latest from socials</h2>
-  <h3>Instagram</h3>
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DPHpx-9DfJq/?img_index=1"
-    data-instgrm-version="14"></blockquote>
-
-  <h3>X (Twitter)</h3>
-  <blockquote class="twitter-tweet">
-    <a href="https://x.com/bacar00t/status/1975230434230391122"></a>
-  </blockquote>
-  <script async src="//www.instagram.com/embed.js"></script>
-  <script async src="https://platform.twitter.com/widgets.js"></script>
-</section>
-
 
   <section id="links" class="card">
     <h2># links</h2>
