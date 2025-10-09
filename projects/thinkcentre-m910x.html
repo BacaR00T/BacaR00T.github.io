@@ -1,81 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ThinkCentre M910x Homelab // bacar00t</title>
-<link rel="icon" href="data:,">
-<style>
-  :root{--bg:#0b0f0c;--fg:#d6f5d0;--dim:#87c787;--accent:#9aff9a;--link:#a6ffea;--muted:#5aa65a}
-  body{margin:0;font:16px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--fg);background:#000}
-  .wrap{max-width:800px;margin:auto;padding:40px 20px}
-  header{border-bottom:1px solid var(--muted);padding-bottom:10px;margin-bottom:20px}
-  a{color:var(--link);text-decoration:none}
-  h1{color:var(--accent);margin-bottom:0}
-  img{max-width:100%;border:1px solid var(--muted);margin:10px 0}
-  pre{background:#06100690;padding:10px;overflow-x:auto}
-  .meta{color:var(--dim);font-size:.9rem;margin-bottom:20px}
-  .grid{display:grid;gap:10px}
-  @media (min-width:800px){.grid{grid-template-columns:1fr 1fr}}
-  .card{border:1px solid var(--muted);padding:12px;background:#06100690}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThinkCentre M910x — bacar00t</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="assets/gallery.css">
 </head>
 <body>
-<div class="wrap">
   <header>
-    <h1>ThinkCentre M910x Homelab</h1>
-    <p class="meta">2025-10-08 · <a href="../projects.html">← all projects</a> · <a href="../index.html">/home</a></p>
+    <h1>// ThinkCentre M910x Homelab</h1>
+    <p><a href="../index.html">← back to home</a></p>
   </header>
 
-  <p>Small but mighty SFF box running game + services. Target: low power, quiet, easy to maintain.</p>
-
-  <div class="grid">
-    <div class="card">
-      <h2>// Hardware</h2>
+  <main>
+    <section>
+      <h2># specs</h2>
       <ul>
-        <li>Lenovo ThinkCentre M910x (SFF)</li>
-        <li>CPU: i7-6700</li>
-        <li>RAM: 32 GB</li>
-        <li>Storage: 256 GB NVMe + 2 TB SATA SSD</li>
+        <li>💻 CPU: Intel i7-6700</li>
+        <li>🧠 RAM: 32 GB DDR4</li>
+        <li>🧮 Storage: 256 GB NVMe + 2 TB SATA SSD</li>
+        <li>🧑‍💻 OS: Proxmox + Debian VM (CasaOS + Crafty MC Server)</li>
       </ul>
-    </div>
-    <div class="card">
-      <h2>// Role</h2>
-      <ul>
-        <li>Host OS: Proxmox</li>
-        <li>Debian VM with CasaOS</li>
-        <li>Crafty panel for Minecraft servers</li>
-      </ul>
-    </div>
-  </div>
+    </section>
 
-  <h2>Screens / Photos</h2>
-  <img src="images/aaa.jpg" alt="M910X mobo">
+    <section>
+      <h2># overview</h2>
+      <p>
+        Compact powerhouse running Proxmox with a Debian VM on top.  
+        Perfect for hosting small containers, Minecraft servers via Crafty, and automated backups.
+      </p>
+    </section>
 
-  <h2>Network & Services</h2>
-  <ul>
-    <li>CasaOS apps: backups, media tools, monitoring</li>
-    <li>Crafty: start/stop MC servers, backups, logs</li>
-    <li>VM layout: Proxmox → Debian VM (Crafty/CasaOS)</li>
-  </ul>
+    <section>
+      <h2># gallery</h2>
+      <div class="gallery" data-gallery>
+        <figure data-item data-full="images/m910x_front.jpg" data-caption="ThinkCentre M910x front view — compact and quiet.">
+          <img src="images/m910x_front.jpg" alt="M910x front view">
+        </figure>
 
-  <h2>Setup notes</h2>
-  <pre># Proxmox install → create Debian VM
-# Basic hardening + updates
-sudo apt update && sudo apt -y upgrade
+        <figure data-item data-full="images/m910x_setup.jpg" data-caption="Setup with Proxmox and Debian VM running CasaOS and Crafty.">
+          <img src="images/m910x_setup.jpg" alt="M910x setup">
+        </figure>
+      </div>
+    </section>
+  </main>
 
-# CasaOS (one-liner)
-curl -fsSL https://get.casaos.io | sudo bash
+  <footer>
+    <p>© bacar00t • <a href="../index.html">home</a></p>
+  </footer>
 
-# Crafty (inside Debian VM)
-sudo apt -y install default-jre screen
-# follow Crafty install docs; expose web UI via reverse proxy or port map
-</pre>
-
-  <h2>Why this box?</h2>
-  <p>Great perf-per-watt, cheap used, runs multiple MC instances smoothly. NVMe for OS, SATA SSD for worlds/backups.</p>
-
-  <p class="meta">© <span id="y"></span> bacar00t</p>
-</div>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script src="assets/gallery.js"></script>
 </body>
 </html>
