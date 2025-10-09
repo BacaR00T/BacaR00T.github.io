@@ -4,9 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ThinkCentre M910x — bacar00t</title>
-  <link rel="stylesheet" href="../style.css">
+
+  <!-- same CRT retro styling as index -->
+  <style>
+    :root{
+      --bg:#0b0f0c; --fg:#d6f5d0; --dim:#87c787; --accent:#9aff9a;
+      --link:#a6ffea; --muted:#5aa65a;
+    }
+    @keyframes crt-flicker { 0%,100%{opacity:.99} 50%{opacity:1} }
+    @keyframes glow { from{text-shadow:0 0 .4rem var(--accent)} }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color:var(--fg); background:radial-gradient(ellipse at center,#0b0f0c 0%, #000 100%);
+      letter-spacing:.2px; text-rendering:optimizeLegibility;
+    }
+    .crt{
+      position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.0) 0, rgba(0,0,0,.0) 2px, rgba(0,255,100,.05) 3px),
+                  radial-gradient(circle at 50% 10%, rgba(0,255,120,.06), transparent 40%);
+      animation: crt-flicker 3s infinite;
+    }
+    header,main,footer{max-width:840px;margin:auto;padding:24px 20px}
+    header{border:1px solid var(--muted);background:#06100690;margin-top:20px;padding:16px}
+    header h1{color:var(--accent);margin:0;font-size:1.35rem;animation:glow 2s ease-out 1}
+    h2{color:var(--accent);margin-top:1.2rem}
+    a{color:var(--link)}
+    ul{list-style:square;padding-left:20px}
+    footer{border-top:1px solid var(--muted);margin-top:40px;color:var(--dim);font-size:.9rem;text-align:center}
+  </style>
+
+  <!-- gallery styling -->
   <link rel="stylesheet" href="assets/gallery.css">
 </head>
+
 <body>
   <header>
     <h1>// ThinkCentre M910x Homelab</h1>
@@ -28,18 +60,18 @@
       <h2># overview</h2>
       <p>
         Compact powerhouse running Proxmox with a Debian VM on top.  
-        Perfect for hosting small containers, Minecraft servers via Crafty, and automated backups.
+        Perfect for hosting containers, Minecraft servers via Crafty, and automated backups.
       </p>
     </section>
 
     <section>
       <h2># gallery</h2>
       <div class="gallery" data-gallery>
-        <figure data-item data-full="images/m910x_front.jpg" data-caption="ThinkCentre M910x front view — compact and quiet.">
+        <figure data-item data-full="images/m910x_front.jpg" data-caption="ThinkCentre M910x front view — compact, quiet, and efficient.">
           <img src="images/m910x_front.jpg" alt="M910x front view">
         </figure>
 
-        <figure data-item data-full="images/m910x_setup.jpg" data-caption="Setup with Proxmox and Debian VM running CasaOS and Crafty.">
+        <figure data-item data-full="images/m910x_setup.jpg" data-caption="Running Proxmox + Debian VM (CasaOS, Crafty server).">
           <img src="images/m910x_setup.jpg" alt="M910x setup">
         </figure>
       </div>
@@ -47,9 +79,14 @@
   </main>
 
   <footer>
-    <p>© bacar00t • <a href="../index.html">home</a></p>
+    <p>© <span id="y"></span> bacar00t • <a href="../index.html">home</a></p>
   </footer>
 
+  <div class="crt" aria-hidden="true"></div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
   <script src="assets/gallery.js"></script>
 </body>
 </html>
