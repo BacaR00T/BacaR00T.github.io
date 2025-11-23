@@ -102,12 +102,16 @@
   <div class="crt" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
-  <nav id="topnav" class="navbar navbar-expand-md fixed-top">
+  <nav id="topnav" class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#intro">$ whoami → bacar00t</a>
-      <button class="navbar-toggler btn btn-outline-success p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navlinks">
-        ☰
+
+      <!-- proper 3-line hamburger -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navlinks"
+              aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navlinks">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#intro">Intro</a></li>
@@ -306,15 +310,16 @@
     const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
 
     function updateActiveNav() {
-      const scrollPos = window.scrollY;
-      const offset = 150; // tweak if needed
-
+      const offset = 120; // height of navbar + some padding
       let currentId = sections[0]?.id;
-      for (const sec of sections) {
-        if (scrollPos + offset >= sec.offsetTop) {
+
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        // choose the last section whose top is above the offset line
+        if (rect.top - offset <= 0) {
           currentId = sec.id;
         }
-      }
+      });
 
       navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -328,6 +333,7 @@
 
     window.addEventListener('scroll', updateActiveNav);
     window.addEventListener('load', updateActiveNav);
+    window.addEventListener('resize', updateActiveNav);
   </script>
 </body>
 </html>
