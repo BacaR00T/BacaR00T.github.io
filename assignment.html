@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -96,7 +96,7 @@
   </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#topnav" data-bs-offset="72" tabindex="0">
+<body tabindex="0">
 
   <!-- CRT overlay -->
   <div class="crt" aria-hidden="true"></div>
@@ -104,54 +104,54 @@
   <!-- NAVBAR -->
   <nav id="topnav" class="navbar navbar-expand-md fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#uvod">$ whoami → bacar00t</a>
+      <a class="navbar-brand" href="#intro">$ whoami → bacar00t</a>
       <button class="navbar-toggler btn btn-outline-success p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navlinks">
         ☰
       </button>
       <div class="collapse navbar-collapse" id="navlinks">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#uvod">Úvod</a></li>
-          <li class="nav-item"><a class="nav-link" href="#servery">Servery</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projekty">Projekty</a></li>
-          <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
-          <li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
+          <li class="nav-item"><a class="nav-link" href="#intro">Intro</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servers">Servers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- ÚVOD -->
-  <section id="uvod" class="section">
+  <!-- INTRO -->
+  <section id="intro" class="section">
     <div class="container" style="max-width:840px">
-      <h1 class="mb-3">Úvod</h1>
-      <p>Ahoj, jsem Batcha – student (IT), Linux enjoyer a člověk co si doma staví servery pro zábavu.</p>
+      <h1 class="mb-3">Intro</h1>
+      <p>Hey, I’m Batcha – IT student, Linux enjoyer, and homelab tinkerer.</p>
       <ul>
         <li>🖥️ Rigs: ThinkPad T480, R5 3600 + RX6700XT, R5 1600 + W5700</li>
         <li>💽 Servers: TrueNAS (i7-3820 / 16G / 4×5TB), Proxmox (i7-6700 / 32G / 2TB SSD)</li>
-        <li>⌨️ Hobbies: DIY keebs (KMK/POG), Chi-fi, 3D tisk (Ender 3 V2), kočky</li>
+        <li>⌨️ Hobbies: DIY keebs (KMK/POG), Chi-fi, 3D printing (Ender 3 V2), cats</li>
       </ul>
     </div>
   </section>
 
-  <!-- SERVERY -->
-  <section id="servery" class="section">
+  <!-- SERVERS -->
+  <section id="servers" class="section">
     <div class="container" style="max-width:840px">
-      <h2 class="mb-3">Servery</h2>
+      <h2 class="mb-3">Servers</h2>
       <div class="row g-3">
         <div class="col-md-6">
           <div class="card p-3 h-100">
-            <h5 class="text-success mb-2">TrueNAS – hlavní NAS</h5>
+            <h5 class="text-success mb-2">TrueNAS — main NAS</h5>
             <ul class="mb-0">
               <li>CPU: i7-3820</li>
               <li>RAM: 16 GB</li>
-              <li>Disky: 4×5 TB (RAID-Z1)</li>
+              <li>Disks: 4×5 TB (RAID-Z1)</li>
               <li>Boot: 240 GB SSD</li>
             </ul>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card p-3 h-100">
-            <h5 class="text-success mb-2">Proxmox – homelab</h5>
+            <h5 class="text-success mb-2">Proxmox — homelab node</h5>
             <ul class="mb-0">
               <li>CPU: i7-6700</li>
               <li>RAM: 32 GB</li>
@@ -164,34 +164,34 @@
     </div>
   </section>
 
-  <!-- PROJEKTY -->
-  <section id="projekty" class="section">
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
     <div class="container" style="max-width:840px">
-      <h2 class="mb-3">Projekty</h2>
+      <h2 class="mb-3">Projects</h2>
       <div class="row g-3">
         <div class="col-md-6">
           <div class="card p-3 h-100">
             <h5 class="text-success">// ThinkCentre M910x Homelab</h5>
-            <p class="mb-2">i7-6700 • 32GB • Proxmox → Debian VM + CasaOS + Crafty</p>
-            <a class="btn btn-outline-success btn-sm" href="projects/thinkcentre-m910x.html" target="_blank">Otevřít →</a>
+            <p class="mb-2">i7-6700 • 32GB • Proxmox → Debian VM + CasaOS + Crafty server.</p>
+            <a class="btn btn-outline-success btn-sm" href="projects/thinkcentre-m910x.html" target="_blank">Open →</a>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card p-3 h-100">
             <h5 class="text-success">// Main NAS — TrueNAS RAID-Z1</h5>
-            <p class="mb-2">i7-3820 • 16GB • 4×5 TB RAID-Z1 • TrueNAS Core</p>
-            <a class="btn btn-outline-success btn-sm" href="projects/main-nas.html" target="_blank">Otevřít →</a>
+            <p class="mb-2">i7-3820 • 16GB • 4×5 TB RAID-Z1 • TrueNAS Core storage server.</p>
+            <a class="btn btn-outline-success btn-sm" href="projects/main-nas.html" target="_blank">Open →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERIE (lightbox via Bootstrap modal) -->
-  <section id="galerie" class="section">
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
     <div class="container" style="max-width:840px">
-      <h2 class="mb-3">Galerie</h2>
-      <p class="mb-3">Pár fotek ze serverů / homelabu. Klikni na náhled pro větší obrázek.</p>
+      <h2 class="mb-3">Gallery</h2>
+      <p class="mb-3">Some photos from the NAS and homelab. Click a thumbnail to open it in a lightbox.</p>
       <div class="row g-3">
         <!-- update paths if needed -->
         <div class="col-6 col-md-4">
@@ -199,7 +199,7 @@
                src="projects/images/nas_mobo.jpg"
                alt="NAS motherboard"
                data-full="projects/images/nas_mobo.jpg"
-               data-caption="NAS motherboard • i7-3820 / 16 GB RAM"
+               data-caption="NAS motherboard — i7-3820 / 16 GB RAM."
                data-idx="0">
         </div>
         <div class="col-6 col-md-4">
@@ -207,7 +207,7 @@
                src="projects/images/aaa.jpg"
                alt="NAS drives"
                data-full="projects/images/aaa.jpg"
-               data-caption="4×5 TB HDD v RAID-Z1 – hlavní datový pool"
+               data-caption="4×5 TB HDDs in RAID-Z1 — main data pool."
                data-idx="1">
         </div>
         <div class="col-6 col-md-4">
@@ -215,17 +215,17 @@
                src="projects/images/m910x_front.jpg"
                alt="M910x front"
                data-full="projects/images/m910x_front.jpg"
-               data-caption="ThinkCentre M910x – kompaktní homelab box"
+               data-caption="ThinkCentre M910x — compact homelab box."
                data-idx="2">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KONTAKT -->
-  <section id="kontakt" class="section">
+  <!-- CONTACT -->
+  <section id="contact" class="section">
     <div class="container" style="max-width:840px">
-      <h2 class="mb-3">Kontakt</h2>
+      <h2 class="mb-3">Contact</h2>
       <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
       <p>GitHub: <a href="https://github.com/BacaR00T" target="_blank">BacaR00T</a></p>
     </div>
@@ -233,7 +233,7 @@
 
   <footer>
     <div class="container" style="max-width:840px">
-      © <span id="y"></span> bacar00t • Single page (Bootstrap + ScrollSpy + Lightbox)
+      © <span id="y"></span> bacar00t • Single page (Bootstrap + custom scrollspy + lightbox)
     </div>
   </footer>
 
@@ -256,7 +256,7 @@
           </div>
         </div>
         <div class="modal-footer border-0">
-          <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Zavřít</button>
+          <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -269,18 +269,8 @@
     // Year in footer
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Initialize ScrollSpy via JS to be extra safe
-    const dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'));
-    dataSpyList.forEach(function (dataSpyEl) {
-      bootstrap.ScrollSpy.getInstance(dataSpyEl) ||
-      new bootstrap.ScrollSpy(dataSpyEl, {
-        target: '#topnav',
-        offset: 72
-      });
-    });
-
     // LIGHTBOX logic (Bootstrap modal)
-    const thumbs = Array.from(document.querySelectorAll('#galerie .thumb'));
+    const thumbs = Array.from(document.querySelectorAll('#gallery .thumb'));
     const modalEl = document.getElementById('lb');
     const modal = new bootstrap.Modal(modalEl);
     const imgEl = document.getElementById('lb-img');
@@ -310,6 +300,34 @@
       if (e.key === 'ArrowRight') show(idx + 1);
       if (e.key === 'Escape') modal.hide();
     });
+
+    // --- Custom scrollspy for navbar ---
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY;
+      const offset = 150; // tweak if needed
+
+      let currentId = sections[0]?.id;
+      for (const sec of sections) {
+        if (scrollPos + offset >= sec.offsetTop) {
+          currentId = sec.id;
+        }
+      }
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === '#' + currentId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
   </script>
 </body>
 </html>
