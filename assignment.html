@@ -414,9 +414,10 @@
       modal.show();
     }
 
-    thumbs.forEach(t => {
-      t.addEventListener('click', () => show(parseInt(t.dataset.idx, 10) || 0));
-    });
+  thumbs.forEach((t, i) => {
+    t.addEventListener('click', () => show(i));
+  });
+
 
     document.getElementById('lb-prev').addEventListener('click', () => show(idx - 1));
     document.getElementById('lb-next').addEventListener('click', () => show(idx + 1));
