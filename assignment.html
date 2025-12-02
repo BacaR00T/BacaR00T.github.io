@@ -392,85 +392,102 @@
   <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-  // Year in footer
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <script>
+    // Year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  // LIGHTBOX logic (Bootstrap modal)
-  const thumbs = Array.from(document.querySelectorAll('#gallery .thumb'));
-  const modalEl = document.getElementById('lb');
-  const modal = new bootstrap.Modal(modalEl);
-  const imgEl = document.getElementById('lb-img');
-  const capEl = document.getElementById('lb-cap');
-  let idx = 0;
+    // LIGHTBOX logic (Bootstrap modal)
+    const thumbs = Array.from(document.querySelectorAll('#gallery .thumb'));
+    const modalEl = document.getElementById('lb');
+    const modal = new bootstrap.Modal(modalEl);
+    const imgEl = document.getElementById('lb-img');
+    const capEl = document.getElementById('lb-cap');
+    let idx = 0;
 
-  function show(i){
-    if (!thumbs.length) return;
-    idx = (i + thumbs.length) % thumbs.length;
-    const t = thumbs[idx];
-    imgEl.src = t.dataset.full || t.src;
-    imgEl.alt = t.alt || '';
-    capEl.textContent = t.dataset.caption || '';
-    modal.show();
-  }
+    function show(i){
+      if (!thumbs.length) return;
+      idx = (i + thumbs.length) % thumbs.length;
+      const t = thumbs[idx];
+      imgEl.src = t.dataset.full || t.src;
+      imgEl.alt = t.alt || '';
+      capEl.textContent = t.dataset.caption || '';
+      modal.show();
+    }
 
-  // ✅ use the *real index* in the NodeList, ignore data-idx completely
   thumbs.forEach((t, i) => {
     t.addEventListener('click', () => show(i));
-  });
+});
 
-  document.getElementById('lb-prev').addEventListener('click', () => show(idx - 1));
-  document.getElementById('lb-next').addEventListener('click', () => show(idx + 1));
 
-  document.addEventListener('keydown', e => {
-    if (!modalEl.classList.contains('show')) return;
-    if (e.key === 'ArrowLeft') show(idx - 1);
-    if (e.key === 'ArrowRight') show(idx + 1);
-    if (e.key === 'Escape') modal.hide();
-  });
+    document.getElementById('lb-prev').addEventListener('click', () => show(idx - 1));
+    document.getElementById('lb-next').addEventListener('click', () => show(idx + 1));
 
-  // --- Custom scrollspy for navbar (fix Gallery + Contact) ---
-  const sections = Array.from(document.querySelectorAll('section[id]'));
-  const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
+    document.addEventListener('keydown', e => {
+      if (!modalEl.classList.contains('show')) return;
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'Escape') modal.hide();
+    });
 
-  function updateActiveNav() {
-    if (!sections.length) return;
+    // --- Custom scrollspy for navbar ---
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
 
-    const scrollPos = window.scrollY;
-    const vh = window.innerHeight;
-    const center = scrollPos + vh / 2;  // middle of viewport
+    function updateActiveNav() {
+      const offset = 120; // height of navbar + some padding
+      let currentId = sections[0]?.id;
 
-    let currentId = sections[0].id;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        // choose the last section whose top is above the offset line
+        if (rect.top - offset <= 0) {
+          currentId = sec.id;
+        }
+      });
 
-    for (const sec of sections) {
-      const top = sec.offsetTop;
-      const bottom = top + sec.offsetHeight;
-      if (center >= top && center < bottom) {
-        currentId = sec.id;
-        break;
-      }
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === '#' + currentId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
     }
 
-    // if we scrolled past the last section's center, force last one active
-    const last = sections[sections.length - 1];
-    if (center >= last.offsetTop + last.offsetHeight / 2) {
-      currentId = last.id;
-    }
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
+    window.addEventListener('resize', updateActiveNav);
+
+    // --- Simple nav click handler: scroll + underline ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const nav = document.getElementById('topnav');
+      const navHeight = nav ? nav.offsetHeight : 0;
+      const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
 
     navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href === '#' + currentId) {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href') || '';
+        if (!href.startsWith('#')) return; // external link, ignore
+
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        // scroll so the section sits just below navbar
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 10;
+        window.scrollTo({ top, behavior: 'smooth' });
+
+        // set active class
+        navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  }
 
-  window.addEventListener('scroll', updateActiveNav);
-  window.addEventListener('load', updateActiveNav);
-  window.addEventListener('resize', updateActiveNav);
-</script>
+        // update URL hash without jumping
+        history.replaceState(null, '', href);
+      });
+  });
+});
 
+  </script>
 </body>
 </html>
